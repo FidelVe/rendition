@@ -30,7 +30,7 @@ const columns = [
   },
   {
     field: 'pokedex_number',
-    label: 'National Pokedex Number',
+    label: ['National', ' Pokedex', ' Number'],
     sortable: true,
     render: value => <code>{value}</code>
   },

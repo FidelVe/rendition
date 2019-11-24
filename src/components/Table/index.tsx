@@ -472,19 +472,46 @@ class Table<T> extends React.Component<TableProps<T>, TableState<T>> {
 													primary={sort.field === item.field}
 													onClick={this.toggleSort}
 												>
-													{item.label || item.field}
-													&nbsp;
-													<FaSort
+													<div
 														style={{
-															display: 'inline-block',
-															marginBottom: '2px',
+															display: 'flex',
+															flexFlow: 'row nowrap',
+															justifyContent: 'center',
+															alignItems: 'center',
 														}}
-														color={
-															sort.field === item.field
-																? theme.colors.info.main
-																: ''
-														}
-													/>
+													>
+														<div
+															style={{
+																display: 'flex',
+																flexFlow: 'row wrap',
+																justifyContent: 'center',
+																alignItems: 'center',
+															}}
+														>
+															{Array.isArray(item.label)
+																? item.label.map(str => {
+																		return (
+																			<p style={{ margin: '0px 4px 0px 0px' }}>
+																				{str}
+																			</p>
+																		);
+																  })
+																: item.label || item.field}
+														</div>
+														&nbsp;
+														<FaSort
+															style={{
+																minWidth: '1em',
+																display: 'inline-block',
+																marginBottom: '2px',
+															}}
+															color={
+																sort.field === item.field
+																	? theme.colors.info.main
+																	: ''
+															}
+														/>
+													</div>
 												</HeaderButton>
 											</div>
 										);
